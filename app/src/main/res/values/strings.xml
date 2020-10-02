@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">precision-tester</string>
+    <string name="description">Please, note as many decimals as possible</string>
+</resources>
