@@ -109,8 +109,8 @@ public class FLActivity extends AppCompatActivity {
             public void run() {
                 fusedLocationProviderClient.removeLocationUpdates(locationCallback);
 
-                tenTest.setEnabled(true);
-                fiveTest.setEnabled(true);
+                tenTest.setActivated(true);
+                fiveTest.setActivated(true);
 
                 //TODO
                 distances = new double[locations.size()];
