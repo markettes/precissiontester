@@ -55,8 +55,8 @@ public class GPSActivity extends AppCompatActivity {
         fiveTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tenTest.setActivated(false);
-                fiveTest.setActivated(false);
+                tenTest.setEnabled(false);
+                fiveTest.setEnabled(false);
                 startTest(5, Double.valueOf(lat.getText().toString()), Double.valueOf(lon.getText().toString()));
             }
         });
@@ -64,8 +64,8 @@ public class GPSActivity extends AppCompatActivity {
         tenTest.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                tenTest.setActivated(false);
-                fiveTest.setActivated(false);
+                tenTest.setEnabled(false);
+                fiveTest.setEnabled(false);
                 startTest(10, Double.valueOf(lat.getText().toString()), Double.valueOf(lon.getText().toString()));
             }
         });
@@ -116,14 +116,18 @@ public class GPSActivity extends AppCompatActivity {
             public void run() {
                 locationManager.removeUpdates(locationListener);
 
-                tenTest.setActivated(true);
-                fiveTest.setActivated(true);
+                tenTest.setEnabled(true);
+                fiveTest.setEnabled(true);
 
                 //TODO
-                distances = new double[locations.size()];
-                for (int i=0; i<secsFromStart(locations, seconds);i++) {
+                String r = "";
+                int stop = secsFromStart(locations, seconds);
+                distances = new double[stop];
+                for (int i=0; i<stop;i++) {
                     distances[i] = locations.get(i).distanceTo(location);
+                    r += distances[i] + "\n";
                 }
+                System.out.println(r);
 
                 result.setText("Average: " + average(distances) + "\nMax error: " + maxError(distances) + "\nMin error: " + minError(distances));
             }
